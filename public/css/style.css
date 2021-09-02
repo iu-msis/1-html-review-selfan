@@ -1,0 +1,14 @@
+body {
+    background-color: rgb(189, 229, 235);
+    color: rgb(16, 60, 192);
+    
+  }
+  th, td {
+    background-color: rgb(189, 229, 235);
+    color: rgb(16, 60, 192);
+  }
+
+li {
+    background-color: rgb(189, 229, 235);
+    color: rgb(192, 16, 192);
+}
