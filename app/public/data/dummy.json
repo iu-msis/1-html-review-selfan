@@ -1,0 +1,11 @@
+{
+    "offers": [
+        {
+            "id": 1,
+            "salary": 120000,
+            "bonus": 9000,
+            "company":"EY",
+            "offerDate": "2021-09-08"
+        }
+    ]
+}
