@@ -36,31 +36,36 @@
 "><img src="img/pic.jpg" alt="Ellen" class="center" width="200" height="200"; ></a>
 
  
-  <table class="table">
+  <table class="table" id="offerApp">
     
     <tbody>
       <tr>
         <th scope="row">Name</th>
-        <td class="name">Ellen Jacob</td>
+        <td class="name">{{result.name.first}} {{result.name.last}}</td>
      
   </tr>
       <tr>
         <th scope="row">Country</th>
-        <td id="Ellen">USA</td>
+        <td id="Ellen">{{result.location.country}}</td>
       </tr>
       <tr>
         <th scope="row">Birthday</th>
-        <td>2/16/1990</td>
+        <td>{{result.dob.date}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Age</th>
+        <td>{{result.dob.age}}</td>
       </tr>
       <tr>
         <th scope="row">Email</th>
         <td>
-          <a href="mailto:some@email.com" >ellenjacob@gmail.com</a>
+          <a href="mailto:some@email.com" >{{result.email}}</a>
         </td>
       </tr>
     </tbody>
   </table>
-
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>
 
