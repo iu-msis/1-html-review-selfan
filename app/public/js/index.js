@@ -11,20 +11,22 @@ computed:{
     }
 },
 methods:{
-
+    fetchUserData(){
+       
+            fetch('https://randomuser.me/api/')
+            .then( response => response.json())
+            .then((responseJson) => {
+                console.log(responseJson);
+                this.result = responseJson.results[0]
+            })
+            .catch( err => {
+                console.error(err);
+            });
+    }
 },
 
 created() {
-    fetch('https://randomuser.me/api/')
-    .then( response => response.json())
-    .then((responseJson) => {
-        console.log(responseJson);
-        this.result = responseJson.results[0]
-    })
-    .catch( err => {
-        console.error(err)
-    })
+    this.fetchUserData();
 }
 }
 Vue.createApp(Offer).mount('#offerApp');
-
