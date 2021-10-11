@@ -1,7 +1,10 @@
-const Offer = {
+const SomeApp = {
     data(){
         return {
-            result: {},
+            "students": [],
+            "selectedStudent": null,
+            "offers": [],
+            offerForm: {}
         }
     },
 computed:{
@@ -11,22 +14,67 @@ computed:{
     }
 },
 methods:{
-    fetchUserData(){
+    selectStudent(s) {
+        if (this.selectedStudent == s) {
+            return;
+        }
+        this.offers = [];
+        this.selectedStudent= s;
+        this.fetchOfferData(s);
+    },
+
+    fetchStudentData(){
        
-            fetch('https://randomuser.me/api/')
+            fetch('/api/student/')
             .then( response => response.json())
             .then((responseJson) => {
                 console.log(responseJson);
-                this.result = responseJson.results[0]
+                this.students = responseJson;
             })
             .catch( err => {
                 console.error(err);
-            });
+            })
     }
+,
+fetchOfferData(s){
+       
+    fetch('/api/offer/index.php?student=' + s.id)
+    .then( response => response.json())
+    .then((responseJson) => {
+        console.log(responseJson);
+        this.offers = responseJson;
+    })
+    .catch( err => {
+        console.error(err);
+    })
 },
+postNewOffer(evt) {
+  this.offerForm.studentId = this.selectedStudent.id;        
+  console.log("Posting!", this.offerForm);
+  alert("Created!");
 
+  fetch('api/offer/create.php', {
+      method:'POST',
+      body: JSON.stringify(this.offerForm),
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    })
+    .then( response => response.json() )
+    .then( json => {
+      console.log("Returned from post:", json);
+      // TODO: test a result was returned!
+      this.offers = json;
+      
+      // reset the form
+      this.offerForm = {};
+    });
+}
+},
 created() {
-    this.fetchUserData();
+this.fetchStudentData();
 }
+
 }
-Vue.createApp(Offer).mount('#offerApp');
+
+Vue.createApp(SomeApp).mount('#offerApp');

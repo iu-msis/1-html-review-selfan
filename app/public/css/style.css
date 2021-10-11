@@ -82,5 +82,27 @@ a:link {
   
 }
 
+.student {
+  margin: 10px 2 px;
+  padding: 2px;
+  border: 1ps solid gray;
+  background-color: white;
+  
+}
+
+
+.selected {
+  background-color: burlywood;
+}
+
+.userName {
+  font-weight:bold;
+}
+
+.studentName{
+  color:#999;
+}
+
+
 /* <https://github.com/tristen/tablesort/blob/gh-pages/tablesort.css -->-- */
 
