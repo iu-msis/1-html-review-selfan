@@ -28,7 +28,7 @@
    <p>Source: https://www.google.com/search?q=book&rlz=1C1ONGR_enUS969&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiDh7PfpuTyAhUBTt8KHXBYBx8Q_AUoAXoECAIQAw&biw=1536&bih=696&dpr=1.25#imgrc=79SOCMHf7w5ODM</p>
     </a>
 <div id="booksApp">
-  <table class="table">
+  <table class="table" id="book1">
     <thead>
       <tr>
         <th scope="col">Title</th>
@@ -41,8 +41,8 @@
     </thead>
     <tbody>
    
-      <tr>
-        <td v-for="books in books"></td>
+      <tr v-for="books in books">
+      <th> scope="row">{{book.id}}</th>
         <td>{{ books.bookname }}</td>
         <td>{{ books.author }}</td>
         <td>{{ books.yearpublished }}</td>
@@ -55,26 +55,43 @@
     </tbody>
   </table>
 
-    <form v-on:submit.prevent="postNewOffer">
+    <form v-on:submit.prevent="postNewBooks">
       <div class="mb-3">
-        <label for="companyName" class="form-label">Title</label>
-        <input type="text" v-model="offerForm.companyName"
-         class="form-control" id="companyName">
+        <label for="bookname" class="form-label">Title</label>
+        <input type="text" v-model="booksForm.bookname"
+         class="form-control" id="bookname">
       </div>
       <div class="mb-3">
-        <label for="salary" class="form-label">Salary</label>
-        <input type="number" v-model="offerForm.salary" class="form-control" id="salary">
+        <label for="author" class="form-label">Author</label>
+        <input type="text" v-model="booksForm.author"
+         class="form-control" id="author">
       </div>
       <div class="mb-3">
-        <label for="bonus" class="form-label">Bonus</label>
-        <input type="number" v-model="offerForm.bonus" class="form-control" id="bonus">
+        <label for="yearpublished" class="form-label">Year Published</label>
+        <input type="number" v-model="booksForm.yearpublished"
+         class="form-control" id="yearpublished">
       </div>
       <div class="mb-3">
-        <label for="offerDate" class="form-label">offerDate</label>
-        <input type="date" v-model="offerForm.offerDate" class="form-control" id="offerDate">
+        <label for="publisher" class="form-label">Publisher</label>
+        <input type="text" v-model="booksForm.publisher"
+         class="form-control" id="publisher">
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="mb-3">
+        <label for="pagecount" class="form-label">Page Count</label>
+        <input type="number" v-model="booksForm.pagecount"
+         class="form-control" id="pagecount">
+      </div>
+      <div class="mb-3">
+        <label for="msrp" class="form-label">MSRP</label>
+        <input type="number" v-model="booksForm.msrp"
+         class="form-control" id="msrp">
+      </div>
+      <button type="submit" class="btn btn-primary">Add a book</button>
+      <button type="button" class="btn btn-outline-secondary" 
+      v-if="selectedBook"
+      v-on:click="handleResetEdit">Cancel Edit</button>
     </form>
+    
     </div>
       <script src="js/tablesort.min.js"></script>
       <script src="js/books.js"></script>
