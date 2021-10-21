@@ -28,7 +28,7 @@
    <p>Source: https://www.google.com/search?q=book&rlz=1C1ONGR_enUS969&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiDh7PfpuTyAhUBTt8KHXBYBx8Q_AUoAXoECAIQAw&biw=1536&bih=696&dpr=1.25#imgrc=79SOCMHf7w5ODM</p>
     </a>
 <div id="booksApp">
-  <table class="table" id="book1">
+  <table class="table">
     <thead>
       <tr>
         <th scope="col">Title</th>
@@ -42,7 +42,7 @@
     <tbody>
    
       <tr v-for="books in books">
-      <th> scope="row">{{book.id}}</th>
+        <th>{{book.id}}</th>
         <td>{{ books.bookname }}</td>
         <td>{{ books.author }}</td>
         <td>{{ books.yearpublished }}</td>
@@ -87,11 +87,8 @@
          class="form-control" id="msrp">
       </div>
       <button type="submit" class="btn btn-primary">Add a book</button>
-      <button type="button" class="btn btn-outline-secondary" 
-      v-if="selectedBook"
-      v-on:click="handleResetEdit">Cancel Edit</button>
     </form>
-    
+
     </div>
       <script src="js/tablesort.min.js"></script>
       <script src="js/books.js"></script>
