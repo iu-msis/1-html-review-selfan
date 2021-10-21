@@ -30,18 +30,20 @@ $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
-$stmt = $db->prepare(
-  'INSERT INTO book (bookname, author, yearpublished, publisher, pagecount, msrp)
-  VALUES (?, ?, ?, ?, ?)'
-);
 
-$stmt->execute([
-  $_POST['bookname'],
-  $_POST['author'],
-  $_POST['yearpublished'],
-  $_POST['pagecount'],
-  $_POST['msrp']
-]);
+//change below
+stmt = $db->prepare(
+    'INSERT INTO book (bookname, author, yearpublished, publisher, pagecount, msrp)
+    VALUES (?, ?, ?, ?, ?)'
+  );
+  
+  $stmt->execute([
+    $_POST['bookname'],
+    $_POST['author'],
+    $_POST['yearpublished'],
+    $_POST['pagecount'],
+    $_POST['msrp']
+  ]);
 
 // Get auto-generated PK from DB
 // https://www.php.net/manual/en/pdo.lastinsertid.php
@@ -50,5 +52,5 @@ $stmt->execute([
 // Step 4: Output
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
-header('HTTP/1.1 303 See Other');
-header('Location: ../offer/?student=' . $_POST['studentId']);
+//header('HTTP/1.1 303 See Other');
+//header('Location: ../offer/?student=' . $_POST['studentId']);

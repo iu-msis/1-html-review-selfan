@@ -27,8 +27,8 @@
 
    <p>Source: https://www.google.com/search?q=book&rlz=1C1ONGR_enUS969&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiDh7PfpuTyAhUBTt8KHXBYBx8Q_AUoAXoECAIQAw&biw=1536&bih=696&dpr=1.25#imgrc=79SOCMHf7w5ODM</p>
     </a>
-
-  <table id="table1" class="table">
+<div id="booksApp">
+  <table class="table">
     <thead>
       <tr>
         <th scope="col">Title</th>
@@ -42,62 +42,47 @@
     <tbody>
    
       <tr>
-        <td scope="row">The Hobbit</td>
-        <td>JRR Tolkien</td>
-        <td>1937</td>
-        <td>Random House</td>
-        <td>231</td>
-        <td>$18</td>
+        <td v-for="books in books"></td>
+        <td>{{ books.bookname }}</td>
+        <td>{{ books.author }}</td>
+        <td>{{ books.yearpublished }}</td>
+        <td>{{ books.publisher }}</td>
+        <td>{{ books.pagecount }}</td>
+        <td>{{ books.msrp }}</td>
       </tr>
-      <tr>
-        <td scope="row">Harry Potter</td>
-        <td>JK Rowling</td>
-        <td>1997</td>
-        <td>Harper Collins</td>
-        <td>212</td>
-        <td>$14</td>
-      </tr>
-      <tr>
-        <td scope="row">The Little Prince</td>
-        <td>Antoine de Saint Expuery</td>
-        <td>1943</td>
-        <td>Random House</td>
-        <td>182</td>
-        <td>$18</td>
-      </tr>
-      <tr>
-        <td scope="row">Fault in Our Stars</td>
-        <td>John Green</td>
-        <td>2014</td>
-        <td>Macmillian</td>
-        <td>191</td>
-        <td>$12</td>
+      
       </tr>
     </tbody>
   </table>
 
-  <form>
-   
-    <form action="/action_page.php">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
-        <label for="author">Author:</label>
-        <input type="text" id="author" name="author"><br><br>
-        <label for="year">Year Published:</label>
-        <input type="number" id="year" name="year"><br><br>
-        <label for="publisher">Publisher:</label>
-        <input type="text" id="publisher" name="publisher"><br><br>
-        <label for="page">Page Count:</label>
-        <input type="number" id="page" name="page"><br><br>
-        <label for="msrp">MSRP $:</label>
-        <input type="number" id="msrp" name="msrp"><br><br>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-      
+    <form v-on:submit.prevent="postNewOffer">
+      <div class="mb-3">
+        <label for="companyName" class="form-label">Title</label>
+        <input type="text" v-model="offerForm.companyName"
+         class="form-control" id="companyName">
+      </div>
+      <div class="mb-3">
+        <label for="salary" class="form-label">Salary</label>
+        <input type="number" v-model="offerForm.salary" class="form-control" id="salary">
+      </div>
+      <div class="mb-3">
+        <label for="bonus" class="form-label">Bonus</label>
+        <input type="number" v-model="offerForm.bonus" class="form-control" id="bonus">
+      </div>
+      <div class="mb-3">
+        <label for="offerDate" class="form-label">offerDate</label>
+        <input type="date" v-model="offerForm.offerDate" class="form-control" id="offerDate">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
       <script src="js/tablesort.min.js"></script>
+      <script src="js/books.js"></script>
   <script>
-    new Tablesort(document.getElementById('table1'));
+    //new Tablesort(document.getElementById('table1'));
   </script>
+
+<script src="https://unpkg.com/vue@next"></script>
   
 </body>
 </html>
