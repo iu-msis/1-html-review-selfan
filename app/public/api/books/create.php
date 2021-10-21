@@ -33,7 +33,7 @@ $db = DbConnection::getConnection();
 
 //change below
 stmt = $db->prepare(
-    'INSERT INTO book (bookname, author, yearpublished, publisher, pagecount, msrp)
+    'INSERT INTO books (bookname, author, yearpublished, publisher, pagecount, msrp)
     VALUES (?, ?, ?, ?, ?)'
   );
   
@@ -42,7 +42,7 @@ stmt = $db->prepare(
     $_POST['author'],
     $_POST['yearpublished'],
     $_POST['pagecount'],
-    $_POST['msrp']
+    $_POST['msrp'],
   ]);
 
 // Get auto-generated PK from DB
