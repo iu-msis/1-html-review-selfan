@@ -5,20 +5,15 @@ USE msisdb;
 
 DROP TABLE IF EXISTS student;
 CREATE TABLE student (
-	name varchar(100) NOT NULL DEFAULT '',
-    author varchar(100) NOT NULL DEFAULT '',
-    yearpublished int NOT NULL DEFAULT 0,
-    publisher varchar(100) NOT NULL DEFAULT '',
-    pagecount int NOT NULL DEFAULT 0,
-    msrp int NOT NULL DEFAULT 0
+	id int PRIMARY KEY AUTO_INCREMENT ,
+    username varchar(24) UNIQUE NOT NULL,
+    name varchar(48)
 );
 
-INSERT INTO student (name, author, yearpublished, publisher, pagecount, msrp) VALUES 
-('The Hobbit', 'JRR Tolkien', 1937, 'Random House', 231, 18),
-('Harry Potter', 'JK Rowling', 1997, 'Harper Collins', 212, 18),
-('The Little Prince', 'Antoine de Saint Expuery', 1943, 'Random House', 182, 14),
-('Fault in Our Stars', 'John Green', 2014, 'Macmillian', 191, 12) 
-;
+INSERT INTO student (id, username, name) VALUES 
+(1, 'tomgreg', 'Tom Gregory'),
+(2, 'beth1', 'Beth Barnhart'),
+(3, 'bipin', 'Prof. Prabhakar');
 
 -- SELECT * FROM students;
 
@@ -46,6 +41,7 @@ USE booksdb;
 
 DROP TABLE IF EXISTS books;
 CREATE TABLE books (
+	id int PRIMARY KEY AUTO_INCREMENT,
     bookname varchar(100) NOT NULL DEFAULT '',
     author varchar(100) NOT NULL DEFAULT '',
     yearpublished int NOT NULL DEFAULT 0,
@@ -55,13 +51,13 @@ CREATE TABLE books (
     
 );
 
-INSERT INTO books (bookname, author, yearpublished, publisher, pagecount, msrp) VALUES 
-('The Hobbit', 'JRR Tolkien', 1937, 'Random House', 231, 18),
-('Harry Potter', 'JK Rowling', 1997, 'Harper Collins', 212, 18),
-('The Little Prince', 'Antoine de Saint Expuery', 1943, 'Random House', 182, 14),
-('Fault in Our Stars', 'John Green', 2014, 'Macmillian', 191, 12) 
+INSERT INTO books (id, bookname, author, yearpublished, publisher, pagecount, msrp) VALUES 
+(1,'The Hobbit', 'JRR Tolkien', 1937, 'Random House', 231, 18),
+(2,'Harry Potter', 'JK Rowling', 1997, 'Harper Collins', 212, 18),
+(3,'The Little Prince', 'Antoine de Saint Expuery', 1943, 'Random House', 182, 14),
+(4,'Fault in Our Stars', 'John Green', 2014, 'Macmillian', 191, 12) 
 ;
--- SELECT * FROM students;
+SELECT * FROM books;
 
 -- COMMIT;
 

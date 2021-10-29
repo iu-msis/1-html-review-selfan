@@ -27,10 +27,11 @@
 
    <p>Source: https://www.google.com/search?q=book&rlz=1C1ONGR_enUS969&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiDh7PfpuTyAhUBTt8KHXBYBx8Q_AUoAXoECAIQAw&biw=1536&bih=696&dpr=1.25#imgrc=79SOCMHf7w5ODM</p>
     </a>
-<div id="booksApp">
+<div id="bookApp">
   <table class="table">
     <thead>
       <tr>
+        <th scope="col">Book ID</th>
         <th scope="col">Title</th>
         <th scope="col">Author(s)</th>
         <th scope="col">Year Published</th>
@@ -41,17 +42,18 @@
     </thead>
     <tbody>
    
-      <tr v-for="books in books">
-        <th>{{book.id}}</th>
-        <td>{{ books.bookname }}</td>
-        <td>{{ books.author }}</td>
-        <td>{{ books.yearpublished }}</td>
-        <td>{{ books.publisher }}</td>
-        <td>{{ books.pagecount }}</td>
-        <td>{{ books.msrp }}</td>
-      </tr>
-      
-      </tr>
+      <tr v-for="b in books">
+        <th>{{b.id}}</th>
+        <td>{{ b.bookname }}</td>
+        <td>{{ b.author }}</td>
+        <td>{{ b.yearpublished }}</td>
+        <td>{{ b.publisher }}</td>
+        <td>{{ b.pagecount }}</td>
+        <td>{{ b.msrp }}</td>
+      </td>
+        <button type="button" v-on:click="handleEditOffer(offer)" class="btn btn-outline-secondary btn-sm">Edit</button>
+        <button type="button" v-on:click="postDeleteOffer(offer)" class="btn btn-outline-secondary btn-sm">Delete</button>
+      </td>
     </tbody>
   </table>
 
@@ -90,13 +92,14 @@
     </form>
 
     </div>
+    <script src="https://unpkg.com/vue@next"></script>
       <script src="js/tablesort.min.js"></script>
       <script src="js/books.js"></script>
   <script>
     //new Tablesort(document.getElementById('table1'));
-  </script>
+ </script>
 
-<script src="https://unpkg.com/vue@next"></script>
+
   
 </body>
 </html>
